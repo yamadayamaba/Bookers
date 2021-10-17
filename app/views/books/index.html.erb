@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<meta charset="UTF8">
-<html lang="ja"></html>
 <head>
   <title>アプリケーション制作1</title>
 </head>
@@ -19,11 +16,13 @@
   <tbody>
       <tr>
         <% @books.each do |book| %>
+        <span>
           <td><%= book.title %></td>
           <tb><%= book.body %></tb>
-          <tb><%= link_to 'Show',book_path(@book) %></tb>
-          <tb><%= link_to 'Edit',edit_book_path(@book) %></tb>
-          <tb><%= link_to 'Destroy',book_path(@book),method: :delete, date: { confirm: "Are you sure?"} %></tb>
+          <tb><%= link_to 'Show',book_path(book.id) %></tb>
+          <tb><%= link_to 'Edit',edit_book_path(book.id) %></tb>
+          <tb><%= link_to 'Destroy',book_path(book.id),method: :delete, date: { confirm: "Are you sure?"} %></tb>
+        </span>
       <% end %>
       </tr>
   </tbody>
