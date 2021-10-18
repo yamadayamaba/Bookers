@@ -21,19 +21,12 @@
             <tb>
                 <%= link_to"Show",book_path(book.id) %>
                 <%= link_to"Edit",edit_book_path(book.id) %>
-                <%= link_to"Destroy"%>
+                <%= link_to"Destroy",book_path(book.id), method: :delete %>
             </tb>
         </tr>
         <% end %>
     </tbody>
 </table>
-
-
-
-
-
-
-
 
 <h2>New book</h2>
 <%= form_with model:@book, local:true do |f| %>
