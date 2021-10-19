@@ -1,6 +1,10 @@
 <h1>Books</h1>
 
-<table>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+  <table>
     <thead>
         <tr>
             <th>title</th>
@@ -8,7 +12,6 @@
             <th></th>
         </tr>
     </thead>
-    
     <tbody>
         <% @books.each do |book| %>
         <tr>
@@ -26,9 +29,17 @@
         </tr>
         <% end %>
     </tbody>
-</table>
+  </table>
 
 <h2>New book</h2>
+
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のerrorが発生しました
+    <% @book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+<% end %>
+
 <%= form_with model:@book, local:true do |f| %>
 <h4>Title</h4>
 <%= f.text_field :title %>
